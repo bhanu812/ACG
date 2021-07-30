@@ -1,3 +1,3 @@
 # ACG
 
-postman doc link:-https://drive.google.com/file/d/1uq-YMC_4E0aJfS7FmhLJogxsADMAEMCt/view?usp=sharing
+postman doc link:-https://web.postman.co/documentation/6500425-b38754af-d45a-4a7c-9042-bbacfbe2c9e7/publish
