@@ -34,10 +34,12 @@ exports.createPost = asyncHandler(async (req, res, next) => {
 // @desc     Get all posts
 // @access   Private
 exports.getAllpost = asyncHandler(async (req, res, next) => {
-    const posts = await Post.find().sort({ date: -1 });
-    res.status(200).json({ success: true, data: posts });
+    // const posts = await Post.find().sort({ date: -1 });
+    res.status(200).json({ success: true, data: res.advancedResults });
 
 });
+
+
 
 // @route    GET api/posts/:id
 // @desc     Get post by ID
@@ -185,6 +187,10 @@ exports.createComment = asyncHandler(async (req, res, next) => {
 
 
 
+// @route    DELETE api/posts/comment/:id/:comment_id
+// @desc     Delete comment
+// @access   Privateno
+
 exports.deleteComment = asyncHandler(async (req, res, next) => {
     const post = await Post.findById(req.params.id);
 
@@ -220,6 +226,7 @@ exports.deleteComment = asyncHandler(async (req, res, next) => {
 // @desc      Upload photo for post
 // @route     PUT /api/v1/posts/:id/photo
 // @access    Private
+
 exports.postPhotoUpload = asyncHandler(async (req, res, next) => {
     const post = await Post.findById(req.params.id);
 
