@@ -5,6 +5,7 @@ const morgan = require('morgan');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+const fileupload = require('express-fileupload');
 const dotenv = require('dotenv');
 var mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -31,8 +32,8 @@ app.use(cookieParser());
 
 // Route files
 
-// const employees = require('./routes/employees');
-// const user = require('./routes/user');
+
+const posts = require('./routes/posts');
 const auth = require('./routes/auth');
 
 
@@ -44,11 +45,15 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(mongoSanitize());
 
+// File uploading
+app.use(fileupload());
 
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routers
-// app.use('/api/v1/employees', employees);
-// app.use('/api/v1/user', user);
+
+app.use('/api/v1/posts', posts);
 app.use('/api/v1/auth', auth);
 
 app.use(errorHandler);
